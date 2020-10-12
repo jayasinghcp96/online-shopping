@@ -26,10 +26,9 @@
 
 <title>Online Shopping - ${title}</title>
 <script>
-	window.menu = $
-	{
-		title
-	}
+	window.menu = '${title}';
+
+	window.contextRoot = '${contextRoot}'
 </script>
 
 
@@ -38,7 +37,7 @@
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
 <!-- Bootstrap Readable Theme -->
-<link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+<link href="${css}/bootstrap-readable-themecss" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
