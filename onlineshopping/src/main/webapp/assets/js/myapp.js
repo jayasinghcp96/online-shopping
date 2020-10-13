@@ -2,9 +2,8 @@ $(function() {
 
 	/*
 	 * // for adding a loader $(window).load(function(){ setTimeout(function() {
-	 * $(".se-pre-con").fadeOut("slow"); }, 500); });
-	 *  // for handling CSRF token var token =
-	 * $('meta[name="_csrf"]').attr('content'); var header =
+	 * $(".se-pre-con").fadeOut("slow"); }, 500); }); // for handling CSRF token
+	 * var token = $('meta[name="_csrf"]').attr('content'); var header =
 	 * $('meta[name="_csrf_header"]').attr('content');
 	 * 
 	 * if((token!=undefined && header !=undefined) && (token.length > 0 &&
@@ -22,10 +21,17 @@ $(function() {
 	case 'Contact Us':
 		$('#contact').addClass('active');
 		break;
+
+	case 'All Products':
+		$('#listProducts').addClass('active');
+		break;
+
 	default:
-		$('#home').addClass('active');
+		$('#listProducts').addClass('active');
+	    $('#a_'+menu).addClass('active');
 		break;
 	}
+
 });
 
 /*
@@ -39,8 +45,8 @@ $(function() {
  */
 
 /*
- * // code for jquery dataTable var $table = $('#productListTable');
- *  // execute the below code only where we have this table if ($table.length) { //
+ * // code for jquery dataTable var $table = $('#productListTable'); // execute
+ * the below code only where we have this table if ($table.length) { //
  * console.log('Inside the table!');
  * 
  * var jsonUrl = ''; if (window.categoryId == '') { jsonUrl = window.contextRoot +
@@ -54,15 +60,14 @@ $(function() {
  * data : 'code', bSortable : false, mRender : function(data, type, row) {
  * 
  * return '<img src="' + window.contextRoot + '/resources/images/' + data +
- * '.jpg" class="dataTableImg"/>';
- *  } }, { data : 'name' }, { data : 'brand' }, { data : 'unitPrice', mRender :
- * function(data, type, row) { return '&#8377; ' + data } }, { data :
- * 'quantity', mRender : function(data, type, row) {
+ * '.jpg" class="dataTableImg"/>'; } }, { data : 'name' }, { data : 'brand' }, {
+ * data : 'unitPrice', mRender : function(data, type, row) { return '&#8377; ' +
+ * data } }, { data : 'quantity', mRender : function(data, type, row) {
  * 
  * if (data < 1) { return '<span style="color:red">Out of Stock!</span>'; }
  * 
- * return data;
- *  } }, { data : 'id', bSortable : false, mRender : function(data, type, row) {
+ * return data; } }, { data : 'id', bSortable : false, mRender : function(data,
+ * type, row) {
  * 
  * var str = ''; str += '<a href="' + window.contextRoot + '/show/' + data +
  * '/product" class="btn btn-primary"><span class="glyphicon
@@ -78,10 +83,7 @@ $(function() {
  * else { str += '<a href="' + window.contextRoot + '/manage/' + data +
  * '/product" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>'; }
  * 
- * return str;
- *  }
- *  } ] }); }
- * 
+ * return str; } } ] }); }
  * 
  *  // list of all products for admin var $productsTable = $('#productsTable');
  * 
@@ -103,9 +105,8 @@ $(function() {
  * 
  * if (data < 1) { return '<span style="color:red">Out of Stock!</span>'; }
  * 
- * return data;
- *  } }, { data : 'unitPrice', mRender : function(data, type, row) { return
- * '&#8377; ' + data } }, { data : 'active', bSortable : false, mRender :
+ * return data; } }, { data : 'unitPrice', mRender : function(data, type, row) {
+ * return '&#8377; ' + data } }, { data : 'active', bSortable : false, mRender :
  * function(data, type, row) { var str = ''; if(data) { str += '<label
  * class="switch"> <input type="checkbox" value="'+row.id+'" checked="checked">
  * <div class="slider round"> </div></label>';
@@ -133,9 +134,7 @@ $(function() {
  * '/manage/product/'+checkbox.prop('value')+'/activation', timeout : 100000,
  * success : function(data) { bootbox.alert(data); }, error : function(e) {
  * bootbox.alert('ERROR: '+ e); //display(e); } }); } else {
- * checkbox.prop('checked', !checked); } } }); });
- *  } }); }
- * 
+ * checkbox.prop('checked', !checked); } } }); }); } }); }
  * 
  * 
  *  // jQuery Validation Code
@@ -143,13 +142,10 @@ $(function() {
  * //methods required for validation
  * 
  * function errorPlacement(error, element) { // Add the 'help-block' class to
- * the error element error.addClass("help-block");
- *  // add the error label after the input element error.insertAfter(element);
- * 
+ * the error element error.addClass("help-block"); // add the error label after
+ * the input element error.insertAfter(element);
  *  // add the has-feedback class to the // parent div.validate in order to add
- * icons to inputs element.parents(".validate").addClass("has-feedback");
- *  }
- * 
+ * icons to inputs element.parents(".validate").addClass("has-feedback"); }
  * 
  *  // validating the product form element // fetch the form element
  * $categoryForm = $('#categoryForm');
@@ -161,25 +157,20 @@ $(function() {
  * required: 'Please enter product name!', minlength: 'Please enter atleast five
  * characters' }, description: { required: 'Please enter product name!',
  * minlength: 'Please enter atleast five characters' } }, errorElement : "em",
- * errorPlacement : function(error, element) { errorPlacement(error, element); } }
- *  );
- *  }
+ * errorPlacement : function(error, element) { errorPlacement(error, element); } } ); }
  * 
- * validating the loginform
- *  // validating the product form element // fetch the form element $loginForm =
- * $('#loginForm');
+ * validating the loginform // validating the product form element // fetch the
+ * form element $loginForm = $('#loginForm');
  * 
  * if($loginForm.length) {
  * 
- * $loginForm.validate({ rules: { username: { required: true, email: true
- *  }, password: { required: true } }, messages: { username: { required: 'Please
+ * $loginForm.validate({ rules: { username: { required: true, email: true },
+ * password: { required: true } }, messages: { username: { required: 'Please
  * enter your email!', email: 'Please enter a valid email address!' }, password: {
  * required: 'Please enter your password!' } }, errorElement : "em",
  * errorPlacement : function(error, element) { // Add the 'help-block' class to
- * the error element error.addClass("help-block");
- *  // add the error label after the input element error.insertAfter(element); } }
- *  );
- *  }
+ * the error element error.addClass("help-block"); // add the error label after
+ * the input element error.insertAfter(element); } } ); }
  * 
  * 
  * 
